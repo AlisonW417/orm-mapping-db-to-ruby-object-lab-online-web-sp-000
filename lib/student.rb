@@ -66,13 +66,12 @@ class Student
       SELECT * 
       FROM students 
       WHERE grade = 10 
+      ORDER_BY student.id
+      LIMIT ?
     SQL
     
-    DB[:conn].execute(sql).map do |row|
-      counter = 0 
-      until counter == number
+    DB[:conn].execute(sql, number).map do |row|
       self.new_from_db(row)
-      counter += 1
     end 
   end 
   
