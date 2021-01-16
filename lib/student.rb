@@ -69,10 +69,8 @@ class Student
     SQL
     
     DB[:conn].execute(sql, number).map do |row|
-      counter = 0
       until counter = number
       self.new_from_db(row)
-      counter += 1
     end 
   end 
   
